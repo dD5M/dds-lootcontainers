@@ -24,7 +24,7 @@ elseif Config.Minigame == 'ox_lib' then
     end
 
 elseif Config.Minigame and Config.Minigame ~= 'none' then
-    print('[lng-lootcontainers] Invalid minigame specified in config.lua')
+    print('[dds-lootcontainers] Invalid minigame specified in config.lua')
 end
 
 function PoliceAlert(ent)
@@ -60,7 +60,7 @@ function PoliceAlert(ent)
         elseif Config.Dispatch == 'qb-core' then
             TriggerServerEvent('police:server:policeAlert', Lang:t('police.bliptitle'))
         else
-            print('[lng-lootcontainers] Config.Dispatch does not have a valid argument')
+            print('[dds-lootcontainers] Config.Dispatch does not have a valid argument')
         end
     end
 end
@@ -77,8 +77,8 @@ function ProgressBar(ent)
         flags = 16,
     }, {}, {}, function()
         if not NetworkGetEntityIsNetworked(ent) then NetworkRegisterEntityAsNetworked(ent) end
-        TriggerServerEvent('lng-lootcontainers:server:SetEntity', ObjToNet(ent), GetEntityModel(ent), true)
-        if not Config.ResetOnReboot then TriggerServerEvent('lng-lootcontainers:server:ResetEntity', ObjToNet(ent)) end
+        TriggerServerEvent('dds-lootcontainers:server:SetEntity', ObjToNet(ent), GetEntityModel(ent), true)
+        if not Config.ResetOnReboot then TriggerServerEvent('dds-lootcontainers:server:ResetEntity', ObjToNet(ent)) end
         isBusy = false
         ClearPedTasks(PlayerPedId())
     end, function()

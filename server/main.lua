@@ -1,7 +1,7 @@
 local entities = {}
 QBCore = exports['qb-core']:GetCoreObject()
 
-RegisterNetEvent('lng-lootcontainers:server:ResetEntity', function(entity)
+RegisterNetEvent('dds-lootcontainers:server:ResetEntity', function(entity)
     entities[entity] = 0
 end)
 
@@ -21,7 +21,7 @@ if not Config.ResetOnReboot then
     EntityRespawn()
 end
 
-RegisterNetEvent('lng-lootcontainers:server:SetEntity', function(netId, entModel, isFinished)
+RegisterNetEvent('dds-lootcontainers:server:SetEntity', function(netId, entModel, isFinished)
     entities[netId] = 0
     DropItem(isFinished, netId, entModel, source)
 end)
@@ -92,7 +92,7 @@ function DropItem(finished, netId, entModel, playerId)
     end
 end
 
-lib.callback.register('lng-lootcontainers:server:getEntityState', function(source, netId)
+lib.callback.register('dds-lootcontainers:server:getEntityState', function(source, netId)
     if entities[netId] == -1 or entities[netId] == nil then return false else return true end
 end)
 
@@ -100,7 +100,7 @@ AddEventHandler('onResourceStop', function(resName)
     if resName ~= GetCurrentResourceName() then return end
     for _,v in pairs(entities) do
         if v == -1 then
-            TriggerClientEvent('lng-lootcontainers:client:ResetEntity', -1, _)
+            TriggerClientEvent('dds-lootcontainers:client:ResetEntity', -1, _)
         end
     end
 end)

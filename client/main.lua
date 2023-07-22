@@ -36,7 +36,7 @@ CreateThread(function()
                             RequiredItem = v.settings.requireditem or Config.RequiredItem
                         end
                     end
-                    local wasRobbed = lib.callback.await('lng-lootcontainers:server:getEntityState', false, ObjToNet(ent))
+                    local wasRobbed = lib.callback.await('dds-lootcontainers:server:getEntityState', false, ObjToNet(ent))
                     local haswep = exports.ox_inventory:Search('count', RequiredItem)
                     if RequiredItem ~= nil then
                         if haswep >= 1 and not wasRobbed then
@@ -54,7 +54,7 @@ CreateThread(function()
     })
 end)
 
-RegisterNetEvent('lng-lootcontainers:client:ResetEntity', function(netId)
+RegisterNetEvent('dds-lootcontainers:client:ResetEntity', function(netId)
     if NetworkGetEntityIsNetworked(netId) then NetworkUnregisterNetworkedEntity(netId) end
 end)
 
