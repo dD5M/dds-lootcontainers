@@ -1,5 +1,5 @@
 # dds-lootcontainers
-Containers skillchecks and loot by prop
+Required items, skillchecks, and loot by prop
 
 
 # Credit to ZF Labo for most of the code used.  This is an enhancement/repurposing of the below referenced repository.
